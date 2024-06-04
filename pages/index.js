@@ -8,7 +8,7 @@ import {
   SignedOut,
   UserButton
 } from '@clerk/nextjs'
-
+import { useUser } from "@clerk/nextjs";
 
 const heroProps = {
   image: { src: "/img/heroimg.png", alt: "", width: 1000, height: 1680 },
@@ -21,9 +21,14 @@ const heroProps = {
 
 export default function Home() {
   const router = useRouter();
+  const { user } = useUser();
 
   const handleButtonClick = () => {
-    router.push("/main");
+    if (user) {
+      router.push("/main");
+    } else {
+      router.push("https://flowing-weasel-84.accounts.dev/sign-in");
+    }
   }
 
   return (
