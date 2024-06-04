@@ -1,5 +1,14 @@
 import { Hero, Main } from "../sections";
 import { useState } from "react";
+import { useRouter } from "next/router";
+import {
+  ClerkProvider,
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton
+} from '@clerk/nextjs'
+
 
 const heroProps = {
   image: { src: "/img/heroimg.png", alt: "", width: 1000, height: 1680 },
@@ -8,35 +17,13 @@ const heroProps = {
   ctaText: "Start",
 };
 
-const mainProps = {
-  title: "Managed agency selection",
-  description: "Strengthen your onboarding progress",
-  cardProps:[
-    {
-      image: {src:"/img/design.png", alt:"",width:75,height:75},
-      title: "Brief",
-      description: "Complete <strong>brief writing or simple guidance</strong> on what to include, we've got you covered.",
-    },
-    {
-      image: {src:"/img/design.png", alt:"",width:75,height:75},
-      title: "Search",
-      description: "In-depth agency search covering; <strong>criteria matching</strong>, door knocking and due-dilligence vetting.",
-    },
-    {
-      image: {src:"/img/design.png", alt:"",width:75,height:75},
-      title: "Pitch",
-      description: "Comprehensive <strong>pitch management</strong>, including comms, diary managment and pitch hosting.",
-    }
-  ]
-}
+
 
 export default function Home() {
-  const [showMain, setShowMain] = useState(false);
-  const [showHero, setShowHero] = useState(true);
+  const router = useRouter();
 
   const handleButtonClick = () => {
-    setShowHero(false);
-    setShowMain(true);
+    router.push("/main");
   }
 
   return (
@@ -50,8 +37,13 @@ export default function Home() {
         />
       </head>
       <div>
-      {showHero && <Hero {...heroProps} onButtonClick={handleButtonClick} />}
-      {showMain && <Main {...mainProps} />}
+      <SignedOut>
+          <SignInButton />
+        </SignedOut>
+        <SignedIn>
+          <UserButton />
+        </SignedIn>
+      {<Hero {...heroProps} onButtonClick={handleButtonClick} />}
       </div>
     </>
   );

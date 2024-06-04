@@ -11,12 +11,7 @@ import {
 function MyApp({ Component, pageProps }) {
   return (
     <ClerkProvider>
-      <SignedOut>
-        <SignInButton />
-      </SignedOut>
-      <SignedIn>
-        <UserButton />
-      </SignedIn>
+
     <ThemeProvider theme={theme}>
       <Component {...pageProps} />
     </ThemeProvider>
