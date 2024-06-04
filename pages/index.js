@@ -1,6 +1,7 @@
 import { Hero, Main } from "../sections";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import { StyledSignInButton } from "../components/StyledSignInButton/elements";
 import {
   ClerkProvider,
   SignInButton,
@@ -43,7 +44,7 @@ export default function Home() {
       </head>
       <div>
       <SignedOut>
-          <SignInButton />
+          <StyledSignInButton />
         </SignedOut>
         <SignedIn>
           <UserButton />
