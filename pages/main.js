@@ -1,12 +1,5 @@
-
-import {  Main } from "../sections";
-import {
-    ClerkProvider,
-    SignInButton,
-    SignedIn,
-    SignedOut,
-    UserButton
-  } from '@clerk/nextjs'
+import { Main } from "../sections";
+import { UserButton } from '@clerk/nextjs'
 
 const mainProps = {
     title: "Managed agency selection",

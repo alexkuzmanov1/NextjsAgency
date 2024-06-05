@@ -9,7 +9,7 @@ export const Card =({ image, title, description, ...props})=>{
                 <StyledCardParagraph dangerouslySetInnerHTML={{ __html: description }}></StyledCardParagraph>
             </StyledTextContainer>
             <StyledImageContainer>
-                <img src={image.src} width={image.width} height={image.height}/>
+                <img src={image.src} width={image.width} height={image.height} alt=""/>
             </StyledImageContainer>
         </StyledCardContainer>
     )
