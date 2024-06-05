@@ -4,7 +4,8 @@ import { StyledSignInButton } from "../components/StyledSignInButton/elements";
 import { StyledUserButton } from "../components/StyledUserButton/elements";
 import {
   SignedIn,
-  SignedOut
+  SignedOut,
+  UserButton
 } from '@clerk/nextjs'
 import { useUser } from "@clerk/nextjs";
 import Head from "next/head";
@@ -46,7 +47,7 @@ export default function Home() {
           <StyledSignInButton />
         </SignedOut>
         <SignedIn>
-          <StyledUserButton />
+          <UserButton />
         </SignedIn>
       {<Hero {...heroProps} onButtonClick={handleButtonClick} />}
       </>
