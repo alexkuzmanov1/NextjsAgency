@@ -1,5 +1,5 @@
 import { Main } from "../sections";
-import { UserButton } from '@clerk/nextjs'
+import { UserButton, SignedIn, SignedOut } from '@clerk/nextjs'
 
 const mainProps = {
     title: "Managed agency selection",
@@ -28,7 +28,11 @@ const mainProps = {
     return(
         <>
         
+        <SignedOut>
+        </SignedOut>
+        <SignedIn>
           <UserButton />
+        </SignedIn>
       <Main {...mainProps} />
       </>
     )
