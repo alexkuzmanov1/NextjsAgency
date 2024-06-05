@@ -1,5 +1,5 @@
 import { Hero, Main } from "../sections";
-import { useState } from "react";
+import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { StyledSignInButton } from "../components/StyledSignInButton/elements";
 import {
@@ -10,6 +10,7 @@ import {
   UserButton
 } from '@clerk/nextjs'
 import { useUser } from "@clerk/nextjs";
+import { useClerk } from "@clerk/nextjs";
 
 const heroProps = {
   image: { src: "/img/heroimg.png", alt: "", width: 1000, height: 1680 },
@@ -24,7 +25,14 @@ export default function Home() {
   const router = useRouter();
   const { user } = useUser();
 
+  useEffect(() => {
+    if (user) {
+      router.push("/main");
+    }
+  }, [user]);
+  
   const handleButtonClick = () => {
+
     if (user) {
       router.push("/main");
     } else {
